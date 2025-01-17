@@ -1,0 +1,57 @@
+
+.markdown-body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--foreground);
+  overflow-wrap: break-word;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.markdown-body p {
+  margin-bottom: 16px;
+}
+
+.markdown-body pre {
+  padding: 16px;
+  background: var(--background);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-body code {
+  background: var(--background);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, Menlo, Monaco, monospace;
+}
+
+.markdown-body blockquote {
+  padding: 16px;
+  background: var(--background);
+  border-left: 4px solid #ddd;
+  margin: 16px 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-left: 24px;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
