@@ -42,6 +42,18 @@ export default function Home() {
     setUrl("");
   };
 
+  const handleClean = () => {
+    setError("");
+    setMarkdown("");
+    setMarkdownTransformed("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleConvertToMarkdown()
+    }
+  };
+
   const isValidUrl = (string: string) => {
     try {
       new URL(string);
@@ -128,6 +140,7 @@ export default function Home() {
             type="url"
             value={url}
             onChange={handleUrlChange}
+            onKeyDown={handleKeyDown}
           />
           <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
             <Search size={16} strokeWidth={2} />
@@ -178,7 +191,7 @@ export default function Home() {
       </div>
 
       {!markdown && (
-        <div className="mt-6">
+        <div className="mt-6 w-full flex justify-center">
           <Image
             src="/taupe.png"
             alt="avatar"
@@ -258,9 +271,9 @@ export default function Home() {
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
             <TabsContent value="tab-1">
-            <div className="markdown-body bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <div className="markdown-body bg-gray-100 dark:bg-gray-900 p-4 rounded">
             <div id="action-buttons" className="flex justify-end space-x-5">
-              <Button variant="destructive" onClick={() => setMarkdown("")}>
+              <Button variant="destructive" onClick={() => handleClean()}>
                 <Trash
                   className="-ms-1 me-2"
                   size={16}
@@ -279,7 +292,7 @@ export default function Home() {
           </div>
             </TabsContent>
             <TabsContent value="tab-2">
-            <div className="markdown-body bg-gray-100 dark:bg-gray-950 p-4 rounded">
+            <div className="markdown-body bg-gray-100 dark:bg-gray-900 p-4 rounded">
             <ReactMarkdown
               // eslint-disable-next-line react/no-children-prop
               children={markdownTransformed}
@@ -290,7 +303,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="tab-3">
             
-            <div className="markdown-body bg-gray-100 dark:bg-gray-800 p-4 rounded">
+            <div className="markdown-body bg-gray-100 dark:bg-gray-900 p-4 rounded">
               <ReactMarkdown
                 // eslint-disable-next-line react/no-children-prop
                 children="## Under construction ##"
